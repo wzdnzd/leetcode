@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (31.57%)
-# Total Accepted:    48.6K
-# Total Submissions: 153.8K
+# Likes:    547
+# Dislikes: 0
+# Total Accepted:    79.4K
+# Total Submissions: 238.7K
 # Testcase Example:  '["flower","flow","flight"]'
 #
 # 编写一个函数来查找字符串数组中的最长公共前缀。
@@ -36,11 +38,7 @@
 
 
 class Solution:
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
+    def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs) == 0:
             return ''
         if len(strs) == 1:

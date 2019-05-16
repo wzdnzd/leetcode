@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (42.24%)
-# Total Accepted:    81.9K
-# Total Submissions: 193.7K
+# Likes:    870
+# Dislikes: 0
+# Total Accepted:    116.2K
+# Total Submissions: 262.8K
 # Testcase Example:  '[1,1,2]'
 #
 # 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -54,11 +56,7 @@
 
 
 class Solution:
-    def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) < 2:
             return len(nums)
         i, j = 0, 1

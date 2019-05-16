@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (36.18%)
-# Total Accepted:    44.1K
-# Total Submissions: 121.8K
+# Likes:    800
+# Dislikes: 0
+# Total Accepted:    74K
+# Total Submissions: 194.7K
 # Testcase Example:  '"()"'
 #
 # 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
@@ -55,11 +57,7 @@
 
 
 class Solution:
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+    def isValid(self, s: str) -> bool:
         stack = []
         lookup = {')': '(', '}': '{', ']': '['}
         for c in s:

@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (56.40%)
-# Total Accepted:    37.8K
-# Total Submissions: 67K
+# Likes:    472
+# Dislikes: 0
+# Total Accepted:    61K
+# Total Submissions: 106K
 # Testcase Example:  '"III"'
 #
 # 罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
@@ -68,11 +70,7 @@
 
 
 class Solution:
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+    def romanToInt(self, s: str) -> int:
         lookup = {'I': 1, 'V': 5, 'X': 10,
                   'L': 50, 'C': 100, 'D': 500, 'M': 1000}
         ans = 0
