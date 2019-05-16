@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (37.44%)
-# Total Accepted:    35.5K
-# Total Submissions: 94.5K
+# Likes:    188
+# Dislikes: 0
+# Total Accepted:    53K
+# Total Submissions: 138.9K
 # Testcase Example:  '"hello"\n"ll"'
 #
 # 实现 strStr() 函数。
@@ -38,7 +40,7 @@
 
 
 class Solution:
-    def strStr(self, haystack: 'str', needle: 'str') -> 'int':
+    def strStr(self, haystack: str, needle: str) -> int:
         # return haystack.find(needle)
 
         if len(haystack) < len(needle):

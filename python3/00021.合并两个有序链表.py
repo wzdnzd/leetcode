@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (52.05%)
-# Total Accepted:    41.7K
-# Total Submissions: 80K
+# Likes:    455
+# Dislikes: 0
+# Total Accepted:    68.2K
+# Total Submissions: 125.5K
 # Testcase Example:  '[1,2,4]\n[1,3,4]'
 #
 # 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
@@ -28,12 +30,7 @@
 
 
 class Solution:
-    def mergeTwoLists(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         head = ListNode(0)
         tail = head
         while l1 and l2:

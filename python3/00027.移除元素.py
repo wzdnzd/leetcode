@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (52.80%)
-# Total Accepted:    35.4K
-# Total Submissions: 67K
+# Likes:    299
+# Dislikes: 0
+# Total Accepted:    55.8K
+# Total Submissions: 101.9K
 # Testcase Example:  '[3,2,2,3]\n3'
 #
 # 给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
@@ -59,12 +61,7 @@
 
 
 class Solution:
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
+    def removeElement(self, nums: List[int], val: int) -> int:
         if not nums:
             return 0
 

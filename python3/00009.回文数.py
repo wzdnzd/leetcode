@@ -7,8 +7,10 @@
 #
 # algorithms
 # Easy (55.93%)
-# Total Accepted:    67.7K
-# Total Submissions: 121.1K
+# Likes:    591
+# Dislikes: 0
+# Total Accepted:    107.5K
+# Total Submissions: 192.1K
 # Testcase Example:  '121'
 #
 # 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
@@ -41,11 +43,9 @@
 
 
 class Solution:
-    def isPalindrome(self, x):
-        """
-        :type x: int
-        :rtype: bool
-        """
+    def isPalindrome(self, x: int) -> bool:
+        # return str(x) == str(x)[::-1]
+
         if x < 0:
             return False
         nums = []
