@@ -10,7 +10,7 @@ def rename(n):
             if re.match(r'\d+\.\w+', f):
                 index = f.find('.')
 
-                if index == n:
+                if index >= n:
                     continue
 
                 filename = os.path.join(root, f[:index].zfill(n) + f[index:])
