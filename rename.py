@@ -9,8 +9,15 @@ def rename(n):
         for f in files:
             if re.match(r'\d+\.\w+', f):
                 index = f.find('.')
-                os.rename(os.path.join(root, f),
-                          os.path.join(root, f[:index].zfill(n) + f[index:]))
+
+                if index == n:
+                    continue
+
+                filename = os.path.join(root, f[:index].zfill(n) + f[index:])
+                if os.path.exists(filename):
+                    os.remove(filename)
+
+                os.rename(os.path.join(root, f), filename)
 
 
 if __name__ == "__main__":
