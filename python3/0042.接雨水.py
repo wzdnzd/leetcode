@@ -30,14 +30,22 @@
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        l, r, result, min_height = 0, len(height) - 1, 0, 0
-        while l < r:
-            min_height = min(height[l], height[r])
-            while l < r and height[l] <= min_height:
-                result += min_height - height[l]
-                l += 1
-            while l < r and height[r] <= min_height:
-                result += min_height - height[r]
-                r -= 1
+        # l, r, result, min_height = 0, len(height) - 1, 0, 0
+        # while l < r:
+        #     min_height = min(height[l], height[r])
+        #     while l < r and height[l] <= min_height:
+        #         result += min_height - height[l]
+        #         l += 1
+        #     while l < r and height[r] <= min_height:
+        #         result += min_height - height[r]
+        #         r -= 1
 
-        return result
+        # return result
+
+        result, hl, hr = 0, 0, 0
+        for i in range(len(height)):
+            hl = max(hl, height[i])
+            hr = max(hr, height[-i-1])
+            result += hl + hr - height[i]
+
+        return result - hl * len(height)
