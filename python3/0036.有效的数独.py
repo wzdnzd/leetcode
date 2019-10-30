@@ -73,24 +73,12 @@
 #
 #
 
+# @lc code=start
+
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        rows = [{} for i in range(9)]
-        columns = [{} for i in range(9)]
-        boxes = [{} for i in range(9)]
-
-        for i in range(9):
-            for j in range(9):
-                num = board[i][j]
-                if num != '.':
-                    num = int(num)
-                    index = (i // 3) * 3 + j // 3
-
-                    rows[i][num] = rows[i].get(num, 0) + 1
-                    columns[j][num] = columns[j].get(num, 0) + 1
-                    boxes[index][num] = boxes[index].get(num, 0) + 1
-
-                    if rows[i][num] > 1 or columns[j][num] > 1 or boxes[index][num] > 1:
-                        return False
-        return True
+        data = [x for j in [[(c, i), (j, c), (i//3, j//3, c)] for i in range(9)
+                            for j in range(9) for c in [board[i][j]] if c != '.'] for x in j]
+        return len(data) == len(set(data))
+# @lc code=end
