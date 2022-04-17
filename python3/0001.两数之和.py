@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Author: wzdnzd
+Date: 2021-12-12 19:27:01
+Description: 
+Copyright (c) 2022 by wzdnzd, All Rights Reserved.
+"""
 #
 # @lc app=leetcode.cn id=1 lang=python3
 #
