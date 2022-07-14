@@ -35,14 +35,9 @@
 // @lc code=start
 class Solution {
     public int singleNumber(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("illegal argument, nums cannot by empty");
-        }
-
-        // 遍历
         int ans = 0;
-        for (int n : nums) {
-            ans ^= n;
+        for (int num : nums) {
+            ans ^= num;
         }
 
         return ans;
