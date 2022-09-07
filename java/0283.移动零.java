@@ -53,12 +53,10 @@ class Solution {
     public void moveZeroes(int[] nums) {
         int i = 0, j = 0;
         while (j < nums.length) {
-            if (nums[j] == 0) {
-                j++;
-                continue;
-            }
+            if (nums[j] != 0)
+                nums[i++] = nums[j];
 
-            nums[i++] = nums[j++];
+            j++;
         }
 
         while (i < nums.length) {
