@@ -72,6 +72,7 @@ class Solution {
         if (head == null || head.next == null)
             return head;
 
+        // 头插法
         ListNode dummy = new ListNode(0);
         while (head != null) {
             ListNode node = head.next;
@@ -81,6 +82,13 @@ class Solution {
         }
 
         return dummy.next;
+
+        // 递归
+        // ListNode last = reverseList(head.next);
+        // head.next.next = head;
+        // head.next = null;
+
+        // return last;
     }
 }
 // @lc code=end
