@@ -6,11 +6,11 @@
  * https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description/
  *
  * algorithms
- * Medium (72.94%)
- * Likes:    1271
+ * Medium (72.95%)
+ * Likes:    1293
  * Dislikes: 0
- * Total Accepted:    290.4K
- * Total Submissions: 398K
+ * Total Accepted:    300.9K
+ * Total Submissions: 412.4K
  * Testcase Example:  '[1,2,5,3,4,null,6]'
  *
  * 给你二叉树的根结点 root ，请你将它展开为一个单链表：
@@ -76,23 +76,21 @@
  */
 class Solution {
     public void flatten(TreeNode root) {
-        flattenAndReturnLast(root);
-    }
+        TreeNode current = root;
+        while (current != null) {
+            if (current.left != null) {
+                TreeNode left = current.left;
+                TreeNode predecessor = left;
+                while (predecessor.right != null)
+                    predecessor = predecessor.right;
 
-    private TreeNode flattenAndReturnLast(TreeNode root) {
-        if (root == null)
-            return null;
+                predecessor.right = current.right;
+                current.left = null;
+                current.right = left;
+            }
 
-        TreeNode leftLast = flattenAndReturnLast(root.left);
-        TreeNode rightLast = flattenAndReturnLast(root.right);
-
-        if (leftLast != null) {
-            leftLast.right = root.right;
-            root.right = root.left;
-            root.left = null;
+            current = current.right;
         }
-
-        return rightLast != null ? rightLast : leftLast != null ? leftLast : root;
     }
 }
 // @lc code=end
