@@ -62,7 +62,7 @@ class Solution {
     public boolean isRectangleCover(int[][] rectangles) {
         int length = rectangles.length * 2, ids = 0;
         int[][] matrix = new int[length][4];
-        // 初始化re数组,组成[横坐标,纵坐标下顶点,纵坐标上顶点,矩形的左边or右边标志]
+        // 初始化matrix数组,组成[横坐标,纵坐标下顶点,纵坐标上顶点,矩形的左边or右边标志]
         for (int[] i : rectangles) {
             matrix[ids++] = new int[] { i[0], i[1], i[3], 1 };
             matrix[ids++] = new int[] { i[2], i[1], i[3], -1 };
@@ -90,7 +90,7 @@ class Solution {
                 else {
                     int[] pre = list.get(list.size() - 1);
                     int[] cur = matrix[i++];
-                    // 有重叠 直接放回false
+                    // 有重叠 直接返回false
                     if (cur[1] < pre[2])
                         return false;
                     if (cur[1] == pre[2])
