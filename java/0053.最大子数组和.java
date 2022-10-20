@@ -71,10 +71,21 @@ class Solution {
 
         // return ans;
 
-        int length = nums.length, preMax = nums[0], ans = nums[0], current = 0;
-        for (int i = 1; i < length; i++) {
-            current = Math.max(nums[i], preMax + nums[i]);
-            preMax = current;
+        // int length = nums.length, preMax = nums[0], ans = nums[0], current = 0;
+        // for (int i = 1; i < length; i++) {
+        // current = Math.max(nums[i], preMax + nums[i]);
+        // preMax = current;
+        // ans = Math.max(ans, current);
+        // }
+
+        // return ans;
+
+        int ans = Integer.MIN_VALUE, current = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (current < 0)
+                current = nums[i];
+            else
+                current += nums[i];
             ans = Math.max(ans, current);
         }
 

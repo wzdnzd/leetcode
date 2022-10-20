@@ -6,11 +6,11 @@
  * https://leetcode.cn/problems/palindrome-linked-list/description/
  *
  * algorithms
- * Easy (51.81%)
- * Likes:    1425
+ * Easy (52.55%)
+ * Likes:    1544
  * Dislikes: 0
- * Total Accepted:    455.6K
- * Total Submissions: 878.1K
+ * Total Accepted:    517.1K
+ * Total Submissions: 983.4K
  * Testcase Example:  '[1,2,2,1]'
  *
  * 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
@@ -59,33 +59,36 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        if (head == null || head.next == null)
-            return true;
-
         ListNode slow = head, fast = head;
-        ListNode pre = null;
-
         while (fast != null && fast.next != null) {
+            slow = slow.next;
             fast = fast.next.next;
-
-            ListNode node = slow.next;
-            slow.next = pre;
-            pre = slow;
-            slow = node;
         }
 
         if (fast != null)
             slow = slow.next;
 
-        while (pre != null) {
-            if (pre.val != slow.val)
+        slow = reverse(slow);
+        while (slow != null) {
+            if (head.val != slow.val)
                 return false;
-
-            pre = pre.next;
+            head = head.next;
             slow = slow.next;
         }
 
         return true;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode pre = null, tail = null;
+        while (head != null) {
+            tail = head.next;
+            head.next = pre;
+            pre = head;
+            head = tail;
+        }
+
+        return pre;
     }
 }
 // @lc code=end
