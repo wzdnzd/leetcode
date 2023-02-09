@@ -57,6 +57,7 @@
  *
  *
  */
+package main
 
 // @lc code=start
 func numIslands(grid [][]byte) int {

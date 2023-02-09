@@ -53,6 +53,8 @@
  *
  */
 
+package main
+
 // @lc code=start
 
 func coinChange(coins []int, amount int) int {
