@@ -1,0 +1,66 @@
+--
+-- @lc app=leetcode.cn id=1050 lang=mysql
+--
+-- [1050] 合作过至少三次的演员和导演
+--
+-- https://leetcode.cn/problems/actors-and-directors-who-cooperated-at-least-three-times/description/
+--
+-- database
+-- Easy (76.69%)
+-- Likes:    83
+-- Dislikes: 0
+-- Total Accepted:    54.4K
+-- Total Submissions: 71.1K
+-- Testcase Example:  '{"headers":{"ActorDirector":["actor_id","director_id","timestamp"]},"rows":{"ActorDirector":[[1,1,0],[1,1,1],[1,1,2],[1,2,3],[1,2,4],[2,1,5],[2,1,6]]}}'
+--
+-- ActorDirector 表：
+-- 
+-- 
+-- +-------------+---------+
+-- | Column Name | Type    |
+-- +-------------+---------+
+-- | actor_id    | int     |
+-- | director_id | int     |
+-- | timestamp   | int     |
+-- +-------------+---------+
+-- 在 SQL 中，timestamp 是这张表的主键.
+-- 
+-- 
+-- 
+-- 
+-- 查询合作过至少三次的演员和导演的 id 对 (actor_id, director_id)
+-- 
+-- 
+-- 
+-- 示例 1：
+-- 
+-- 
+-- 输入：
+-- ActorDirector 表：
+-- +-------------+-------------+-------------+
+-- | actor_id    | director_id | timestamp   |
+-- +-------------+-------------+-------------+
+-- | 1           | 1           | 0           |
+-- | 1           | 1           | 1           |
+-- | 1           | 1           | 2           |
+-- | 1           | 2           | 3           |
+-- | 1           | 2           | 4           |
+-- | 2           | 1           | 5           |
+-- | 2           | 1           | 6           |
+-- +-------------+-------------+-------------+
+-- 输出：
+-- +-------------+-------------+
+-- | actor_id    | director_id |
+-- +-------------+-------------+
+-- | 1           | 1           |
+-- +-------------+-------------+
+-- 解释：
+-- 唯一的 id 对是 (1, 1)，他们恰好合作了 3 次。
+-- 
+--
+
+-- @lc code=start
+# Write your MySQL query statement below
+SELECT b.actor_id, b.director_id FROM (SELECT a.actor_id, a.director_id, count(1) AS count FROM ActorDirector a GROUP BY a.actor_id, a.director_id) b WHERE b.count >= 3;
+-- @lc code=end
+
