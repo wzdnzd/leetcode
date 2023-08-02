@@ -1,7 +1,7 @@
 --
--- @lc app=leetcode.cn id=184 lang=mysql
+-- @lc app=leetcode.cn id=1184 lang=mysql
 --
--- [184] 共同微信群最多的用户
+-- [1184] 共同微信群最多的用户
 --
 -- database
 --
