@@ -10,8 +10,8 @@ def rename(n):
 
     for root, _, files in os.walk(PATH, topdown=True):
         for f in files:
-            if re.match(r'\d+\.\w+', f):
-                index = f.find('.')
+            if re.match(r"\d+\.\w+", f):
+                index = f.find(".")
 
                 if index == n:
                     continue
