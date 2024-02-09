@@ -6,11 +6,11 @@
  * https://leetcode.cn/problems/cousins-in-binary-tree/description/
  *
  * algorithms
- * Easy (55.81%)
- * Likes:    303
+ * Easy (56.00%)
+ * Likes:    331
  * Dislikes: 0
- * Total Accepted:    65.7K
- * Total Submissions: 117.5K
+ * Total Accepted:    78.3K
+ * Total Submissions: 133.9K
  * Testcase Example:  '[1,2,3,4]\n4\n3'
  *
  * 在二叉树中，根节点位于深度 0 处，每个深度为 k 的节点的子节点位于深度 k+1 处。
@@ -63,7 +63,11 @@
 // @lc code=start
 
 import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * Definition for a binary tree node.
@@ -82,34 +86,42 @@ import java.util.Deque;
  */
 class Solution {
     public boolean isCousins(TreeNode root, int x, int y) {
-        int[] xi = bfs(root, x);
-        int[] yi = bfs(root, y);
+        if (x == root.val || y == root.val)
+            return false;
 
-        return xi[1] == yi[1] && xi[0] != yi[0];
-    }
+        Queue<TreeNode> q = new ArrayDeque<>();
+        Map<Integer, Integer> parent = new HashMap<>();
+        q.offer(root);
 
-    private int[] bfs(TreeNode root, int target) {
-        Deque<Object[]> d = new ArrayDeque<>();
-        d.addLast(new Object[] { root, null, 0 });
+        while (!q.isEmpty()) {
+            int size = q.size();
+            Set<Integer> level = new HashSet<>();
 
-        while (!d.isEmpty()) {
-            int size = d.size();
-            while (size-- > 0) {
-                Object[] record = d.pollFirst();
-                TreeNode current = (TreeNode) record[0];
-                TreeNode father = (TreeNode) record[1];
-                int depth = (Integer) record[2];
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
 
-                if (current.val == target)
-                    return new int[] { father != null ? father.val : 0, depth };
-                if (current.left != null)
-                    d.addLast(new Object[] { current.left, current, depth + 1 });
-                if (current.right != null)
-                    d.addLast(new Object[] { current.right, current, depth + 1 });
+                if (node.left != null) {
+                    q.offer(node.left);
+                    parent.put(node.left.val, node.val);
+                }
+
+                if (node.right != null) {
+                    q.offer(node.right);
+                    parent.put(node.right.val, node.val);
+                }
+
+                level.add(node.val);
             }
+
+            if (!level.contains(x) && !level.contains(y))
+                continue;
+            else if (level.contains(x) && level.contains(y) && !parent.get(x).equals(parent.get(y)))
+                return true;
+            else
+                return false;
         }
 
-        return new int[] { -1, -1 };
+        return false;
     }
 }
 // @lc code=end
