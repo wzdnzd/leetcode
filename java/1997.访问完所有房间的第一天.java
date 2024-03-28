@@ -80,21 +80,14 @@ class Solution {
     private static final int MOD = 1000000007;
 
     public int firstDayBeenInAllRooms(int[] nextVisit) {
+        // https://leetcode.cn/problems/first-day-where-you-have-been-in-all-the-rooms/solutions/979221/qian-zhui-he-you-hua-dp-by-endlesscheng-j10b
         int n = nextVisit.length;
-        int[] dp = new int[n];
-        dp[0] = 2;
+        long[] dp = new long[n];
 
-        for (int i = 1; i < n; i++) {
-            dp[i] = 2 + dp[i - 1];
+        for (int i = 0; i < n - 1; i++)
+            dp[i + 1] = (2 * dp[i] - dp[nextVisit[i]] + 2 + MOD) % MOD;
 
-            int target = nextVisit[i];
-            if (target != 0)
-                dp[i] = (dp[i] - dp[target - 1] + MOD) % MOD;
-
-            dp[i] = (dp[i] + dp[i - 1]) % MOD;
-        }
-
-        return dp[n - 2];
+        return (int) dp[n - 1];
     }
 }
 // @lc code=end
