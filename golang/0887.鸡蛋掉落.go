@@ -6,11 +6,11 @@
  * https://leetcode.cn/problems/super-egg-drop/description/
  *
  * algorithms
- * Hard (29.75%)
- * Likes:    825
+ * Hard (31.27%)
+ * Likes:    1015
  * Dislikes: 0
- * Total Accepted:    64.3K
- * Total Submissions: 216K
+ * Total Accepted:    87.6K
+ * Total Submissions: 278.7K
  * Testcase Example:  '1\n2'
  *
  * 给你 k 枚相同的鸡蛋，并可以使用一栋从第 1 层到第 n 层共有 n 层楼的建筑。
@@ -64,48 +64,31 @@
 package main
 
 func superEggDrop(k int, n int) int {
-	arrays := make([][]int, k+1)
-	for i := range arrays {
-		arrays[i] = make([]int, n+1)
+	dp := make([][]int, k+1)
+	for i := 0; i <= k; i++ {
+		dp[i] = make([]int, n+1)
 	}
 
-	for i := 1; i <= n; i++ {
-		arrays[0][i] = 0
-		arrays[1][i] = i
+	for j := 1; j <= n; j++ {
+		dp[1][j] = j
 	}
 
 	for i := 1; i <= k; i++ {
-		arrays[i][0] = 0
+		dp[i][1] = 1
 	}
 
 	for i := 2; i <= k; i++ {
-		for j := 1; j <= n; j++ {
-			minV := n * n
-			for m := 1; m <= j; m++ {
-				minV = min(minV, 1+max(arrays[i-1][m-1], arrays[i][j-m]))
+		p := 1
+		for j := 2; j <= n; j++ {
+			for p <= j && max(dp[i-1][p-1], dp[i][j-p]) > max(dp[i-1][p], dp[i][j-p-1]) {
+				p++
 			}
 
-			arrays[i][j] = minV
+			dp[i][j] = max(dp[i-1][p-1], dp[i][j-p]) + 1
 		}
 	}
 
-	return arrays[k][n]
-}
-
-func max(m int, n int) int {
-	if m < n {
-		return n
-	}
-
-	return m
-}
-
-func min(m int, n int) int {
-	if m < n {
-		return m
-	}
-
-	return n
+	return dp[k][n]
 }
 
 // @lc code=end
