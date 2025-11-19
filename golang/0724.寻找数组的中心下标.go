@@ -6,11 +6,11 @@
  * https://leetcode.cn/problems/find-pivot-index/description/
  *
  * algorithms
- * Easy (52.91%)
- * Likes:    630
+ * Easy (54.80%)
+ * Likes:    709
  * Dislikes: 0
- * Total Accepted:    370.3K
- * Total Submissions: 697.3K
+ * Total Accepted:    457.1K
+ * Total Submissions: 834K
  * Testcase Example:  '[1,7,3,6,5,6]'
  *
  * 给你一个整数数组 nums ，请计算数组的 中心下标 。
@@ -72,21 +72,19 @@
 package main
 
 func pivotIndex(nums []int) int {
-	sum := 0
-	for _, v := range nums {
-		sum += v
+	total := 0
+	for _, num := range nums {
+		total += num
 	}
 
-	left := 0
-	right := sum
-
-	for i := 0; i < len(nums); i++ {
-		right -= nums[i]
-		if left == right {
-			return i
+	record := 0
+	for index, num := range nums {
+		target := total - num - record
+		if target == record {
+			return index
 		}
 
-		left += nums[i]
+		record += num
 	}
 
 	return -1
