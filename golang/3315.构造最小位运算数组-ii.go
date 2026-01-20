@@ -1,16 +1,16 @@
 /*
- * @lc app=leetcode.cn id=3314 lang=golang
+ * @lc app=leetcode.cn id=3315 lang=golang
  *
- * [3314] 构造最小位运算数组 I
+ * [3315] 构造最小位运算数组 II
  *
- * https://leetcode.cn/problems/construct-the-minimum-bitwise-array-i/description/
+ * https://leetcode.cn/problems/construct-the-minimum-bitwise-array-ii/description/
  *
  * algorithms
- * Easy (81.98%)
- * Likes:    4
+ * Medium (61.19%)
+ * Likes:    12
  * Dislikes: 0
- * Total Accepted:    4.7K
- * Total Submissions: 5.6K
+ * Total Accepted:    5.9K
+ * Total Submissions: 8.1K
  * Testcase Example:  '[2,3,5,7]'
  *
  * 给你一个长度为 n 的质数数组 nums 。你的任务是返回一个长度为 n 的数组 ans ，对于每个下标 i ，以下 条件 均成立：
@@ -72,7 +72,7 @@
  *
  *
  * 1 <= nums.length <= 100
- * 2 <= nums[i] <= 1000
+ * 2 <= nums[i] <= 10^9
  * nums[i] 是一个质数。
  *
  *
@@ -86,7 +86,7 @@ func minBitwiseArray(nums []int) []int {
 		if x == 2 {
 			nums[i] = -1
 		} else {
-			nums[i] ^= (x + 1) & ^x >> 1
+			nums[i] ^= ((x + 1) & ^x) >> 1
 		}
 	}
 
