@@ -1,0 +1,23 @@
+#!/bin/sh
+# 提交前规范化 leetcode 文件名，并重新暂存，避免先 add 再 rename 导致 index 错乱。
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if command -v python >/dev/null 2>&1; then
+  PYTHON=python
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON=python3
+else
+  echo "pre-commit: 未找到 python/python3，中止提交" >&2
+  exit 1
+fi
+
+"$PYTHON" -u rename.py || {
+  echo "pre-commit: rename.py 执行失败，中止提交" >&2
+  exit 1
+}
+
+# 把重命名产生的删除/新增同步进暂存区
+git add -A
+
+exit 0
